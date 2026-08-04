@@ -1,0 +1,24 @@
+{
+  "header": {
+    "id": "omni-shell-demo",
+    "name": "Omni Shell Demo Environment",
+    "tool": "stager",
+    "category": "filesystems",
+    "schemaVersion": "1.0",
+    "manifestVersion": "1.0.0"
+  },
+  "defaultRoot": "/var/www/html/omni-shell",
+  "variables": {
+    "user": "demo"
+  },
+  "directories": [
+    "site",
+    "demo-fs-seed/Users/${user}/Documents",
+    "demo-fs",
+    "config",
+    "state/demo",
+    "logs",
+    "backups"
+  ],
+  "files": []
+}
