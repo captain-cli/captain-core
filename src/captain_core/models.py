@@ -20,3 +20,17 @@ class ResolvedManifest:
     path: Path
     header: ManifestHeader
     document: dict[str, Any]
+
+
+@dataclass(frozen=True)
+class ResolvedCaptainManifest:
+    path: Path
+    document: dict[str, Any]
+
+
+@dataclass(frozen=True)
+class ResolvedToolConfig:
+    tool: str
+    path: Path
+    config: dict[str, Any]
+    inline: bool
