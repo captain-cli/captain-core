@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 
 from captain_core.errors import ManifestError
 
@@ -8,9 +8,9 @@ from captain_core.errors import ManifestError
 def validate_relative_reference(value: str, field_name: str = "reference") -> Path:
     if not isinstance(value, str) or not value.strip():
         raise ManifestError(f"{field_name} must be a non-empty string.")
-    normalized = value.replace("\\", "/").strip("/")
+    normalized = value.replace("\\", "/")
     candidate = Path(normalized)
-    if candidate.is_absolute() or ".." in candidate.parts:
+    if candidate.is_absolute() or PureWindowsPath(value).is_absolute() or ".." in candidate.parts:
         raise ManifestError(f"{field_name} must remain inside its configured root: {value}")
     if not candidate.parts:
         raise ManifestError(f"{field_name} resolves to an empty path.")

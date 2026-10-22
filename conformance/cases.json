@@ -1,0 +1,33 @@
+{
+  "schema": "captain/conformance/v1",
+  "cases": [
+    {
+      "id": "inline",
+      "expected": "accept"
+    },
+    {
+      "id": "split",
+      "expected": "accept"
+    },
+    {
+      "id": "hybrid-different-tools",
+      "expected": "accept"
+    },
+    {
+      "id": "duplicate-same-tool",
+      "expected": "reject"
+    },
+    {
+      "id": "foreign-owner",
+      "expected": "reject"
+    },
+    {
+      "id": "traversal",
+      "expected": "reject"
+    },
+    {
+      "id": "symlink-escape",
+      "expected": "reject"
+    }
+  ]
+}

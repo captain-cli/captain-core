@@ -163,3 +163,12 @@ class ProjectManifestTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_absolute_tool_manifest_reference_rejected(tmp_path):
+    from captain_core.filesystem import validate_relative_reference
+    from captain_core.errors import ManifestError
+    import pytest
+    for value in ("/etc/passwd", "C:\\Windows\\system32", "\\\\server\\share\\file.json"):
+        with pytest.raises(ManifestError):
+            validate_relative_reference(value, "manifests.stager")
